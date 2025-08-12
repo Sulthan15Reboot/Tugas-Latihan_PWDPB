@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body{
+            font-family: Arial;
+            color: yellow;
+        }
+        input{
+            margin-right: 10px;
+        }
+        h2{
+            color: red;
+        }
+        p.ex{
+            color: rgb(0,0,255);
+        }
+        div{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <marquee behavior="alternate" direction="left"><h2>Demo Membuat Kontrol Text</h2></marquee>
+    <form>
+        <fieldset style="color: orange;">
+        <legend>Bio Data</legend>
+        <div>
+        <p class="ex">Nama : </p>
+        <input type="text" name="txtNama" size="30" >
+        <br>
+       <p style="color: yellow;"> Alamat : </p>
+        <input type="text" name="txtAlamat" size="50">
+        <br>
+       <p style="color: green;"> No.Telepon : </p>
+        <input type="text" name="txtTelepon"size="20">
+        <br>
+        <p style="color: cyan;">Kelamin:</p>
+        <label>
+        <input type="radio" name="kelamin" value="kelamin"> Laki-Laki
+        </label><br>
+        <label>
+        <input type="radio" name="kelamin" value="kelamin"> Perempuan
+        </label><br>
+        <p style="color: lime;">Hobi:</p>
+        <input type="checkbox"name="hobi"value="game">Bermain Game <br>
+        <input type="checkbox"name="hobi"value="olahraga">Olahraga <br>
+        <input type="checkbox"name="hobi"value="Instrumen">Bermain Alat-Alat Instrumen <br>
+        <input type="checkbox"name="hobi"value="Berenang">Berenang<br>
+        <input type="checkbox"name="hobi"value="Bersepeda">Bersepeda <br>
+        <input type="checkbox"name="hobi"value="Art/Melukis">Art/Melukis<br>
+        <input type="checkbox"name="hobi"value="Memasak">Memasak<br>
+        <br>
+        <label for="jurusan">Jurusan</label>
+        <select id="jurusan" name="jurusan">
+        <option value="PPLG">PPLG</option>
+        <option value="ULW">ULW</option>
+        <option value="MPLB">MPLB</option>
+        <option value="TJKT">TJKT</option>
+        <option value="UPW">UPW</option>
+        </select>
+        <br>
+        <p><input type="file" value="file"> masukkan file</p>
+             <p><input type="file" accept="image/*" id="gambar" name="gambar">
+                <button type="submit">Unggah Gambar</button>
+             <input type="checkbox">Syarat Sudah Terpenuhi</p>
+        <p style="color: brown;">Ulasan</p>
+        <br>
+        <textarea name="user_feedback" id="feedback" name="user_feedback" rows="5" cols="40" placeholder="beri ulasan anda di sini..."></textarea>
+        <br>
+        <p><input type="submit" value="Kirim"><input type="reset" value="Batal"></p>
+        </div>
+        </fieldset>
+    </form>
+    <p style="color: black;">Gambar:</p>
+    <img src="c:\Users\DELL\OneDrive\Pictures\Screenshot\Screenshot 2025-08-08 142439.png" alt="" width="70%"height="50%">
+</body>
+</html>

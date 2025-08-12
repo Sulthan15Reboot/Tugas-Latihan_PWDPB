@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website tanpa tabel</title>
+    <style>
+        h1, h2 {
+            text-align: center;
+        }
+        nav {
+            background-color: skyblue;
+            padding: 10px;
+            margin: 0;
+        }
+        nav a{
+            text-decoration: none;
+            display: inline-flex;
+            padding: 10px 15px;
+            color: aliceblue;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 10px 15px; 
+            text-decoration: none; 
+            color: white; 
+            background-color: rgb(27, 182, 230); 
+        }
+        .nav-link:hover {
+            background-color: #ddd; 
+            color: cyan; 
+        }
+        div {
+            width: 97vw;
+            height: 97vh;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about_us">About Us</a>
+        <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <div id="home">
+        <h1>Website tanpa tabel</h1>
+        <h2>contoh website tanpa tabel, tapi menggunakan div</h2>
+    </div>
+    <div id="about_us" style="background-color: orange;">
+        <h1>About Us</h1>
+        Backend : Sulthan Muhammad As Sauqi <br>
+        Frontend : Sulthan Muhammad As Sauqi
+    </div>
+    <div id="contact" style="background-color: lime;">
+        <h1>Contact</h1>
+        E-Mail : sulthanassauqi13@gmail.com <br>
+        Phone Number: 08895611452893
+    </div>
+    <footer align="center">
+        <small>&copy; Sulthan Muhammad As Sauqi </small>
+    </footer>
+</body>
+</html>

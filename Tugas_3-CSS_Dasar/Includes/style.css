@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: linen;
+    margin: 0 auto;
+}
+nav {
+    background-color: lightpink;
+    padding: 10px;
+}
+nav a {
+    padding: 0 10px;
+}
+header, footer {
+    background-color: lightseagreen;
+    color: white;
+}
+header {
+    text-align: left;
+    margin: 0;
+    width: 100%;
+    padding: 40px;
+    padding-left: 8px;
+}
+footer {
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+div {
+    margin-top: 10px;
+    margin-bottom: 10px ;
+}

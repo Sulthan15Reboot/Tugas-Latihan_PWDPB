@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body{
+            font-family: Arial;
+            color: yellow;
+        }
+        input{
+            margin-right: 10px;
+        }
+        h2{
+            color: red;
+        }
+        p.ex{
+            color: rgb(0,0,255);
+        }
+    </style>
+</head>
+<body>
+    <marquee behavior="alternate" direction="left"><h2>Demo Membuat Kontrol Text</h2></marquee>
+    <form>
+        <fieldset style="color: orange;">
+        <legend> Bio Data </legend>
+        <p class="ex">Nama : </p>
+        <input type="text" name="txtNama" size="30" >
+        <br>
+       <p style="color: yellow;"> Alamat : </p>
+        <input type="text" name="txtAlamat" size="50">
+        <br>
+       <p style="color: green;"> No.Telepon : </p>
+        <input type="text" name="txtTelepon"size="20">
+        <br>
+        <p><input type="submit" value="Submit"><input type="reset" value="Batal"></p>
+        </fieldset>
+    </form>
+</body>
+</html>
