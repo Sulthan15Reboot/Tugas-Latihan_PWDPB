@@ -1,9 +1,0 @@
-Cara memasukan database (XAMPP-phpmyadmin):
-1. ekstrak file zip
-2. pergi ke localhost/phpmyadmin
-3. buat database kosong baru dengan nama yang sama dengan file sql dalam zip
-4. masuk kedalam database yang dibuat
-5. pilih menu import/impor
-6. tekan choose file, dan pilih file sql yang telah diekstrak
-7. tekan tombol impor/import dibawah
-8. selesai 
