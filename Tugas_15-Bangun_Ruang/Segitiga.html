@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>Menghitung Luas dan Keliling Segitiga</title>
+    <script type="text/javascript">
+      function hitungluaskeliling() {
+        // input data
+        sisi = document.getElementById("sisi").value;
+        alas = document.getElementById("alas").value;
+        tinggi = document.getElementById("tinggi").value;
+        // prosess
+        luas = (alas * tinggi) / 2;
+        keliling = 2 * sisi + alas;
+        // output
+        document.getElementById("luas").value = luas;
+        document.getElementById("keliling").value = keliling;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <h4>Menghitung Luas & Keliling Segitiga</h4>
+      <table>
+        <!-- input -->
+        <tr>
+          <td>Sisi</td>
+          <td>:</td>
+          <td><input type="text" id="sisi" name="sisi" /></td>
+        </tr>
+        <tr>
+          <td>Alas</td>
+          <td>:</td>
+          <td><input type="text" id="alas" name="alas" /></td>
+        </tr>
+        <tr>
+          <td>Tinggi</td>
+          <td>:</td>
+          <td><input type="text" id="tinggi" name="tinggi" /></td>
+        </tr>
+        <!-- output -->
+        <tr>
+          <td>Luas</td>
+          <td>:</td>
+          <td>
+            <input
+              type="text"
+              id="luas"
+              name="luas"
+              disabled="true"
+              size="10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Keliling</td>
+          <td>:</td>
+          <td>
+            <input
+              type="text"
+              id="keliling"
+              name="keliling"
+              disabled="true"
+              size="10"
+            />
+          </td>
+        </tr>
+        <!-- Prosses -->
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <input
+              type="button"
+              value="Hitung"
+              onClick="hitungluaskeliling()"
+            />
+          </td>
+          <td><input type="reset" value="Reset" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+
+<html>
+  <head>
+    <title>Menghitung Luas dan Keliling Jajar Genjang</title>
+    <script type="text/javascript">
+      function HitungLuasKeliling() {
+        a = document.getElementById("a").value;
+        b = document.getElementById("b").value;
+        tinggi = document.getElementById("tinggi").value;
+        luas = a * tinggi;
+        keliling = 2 * (a + b);
+        document.getElementById("luas").value = luas;
+        document.getElementById("keliling").value = keliling;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <h4>Menghitung Luas & Keliling Jajar Genjang</h4>
+      <table>
+        <tr>
+          <td>Alas</td>
+          <td>:</td>
+          <td><input type="text" id="a" name="a" /></td>
+        </tr>
+        <tr>
+          <td>Tinggi</td>
+          <td>:</td>
+          <td><input type="text" id="tinggi" name="tinggi" /></td>
+        </tr>
+        <tr>
+          <td>Sisi Miring</td>
+          <td>:</td>
+          <td><input type="text" id="b" name="b" /></td>
+        </tr>
+        <tr>
+          <td>Luas</td>
+          <td>:</td>
+          <td>
+            <input
+              type="text"
+              id="luas"
+              name="luas"
+              disabled="true"
+              size="10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Keliling</td>
+          <td>:</td>
+          <td>
+            <input
+              type="text"
+              id="keliling"
+              name="keliling"
+              disabled="true"
+              size="10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <input
+              type="button"
+              value="Hitung"
+              onClick="HitungLuasKeliling()"
+            />
+          </td>
+          <td><input type="reset" value="Reset" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
