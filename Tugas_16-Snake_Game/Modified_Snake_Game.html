@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Snake Game</title>
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+
+      #game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      #main-area {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      /* --- CSS BARU untuk Wrapper Canvas --- */
+      #canvas-wrapper {
+        position: relative; /* Diperlukan untuk memposisikan tombol start */
+      }
+
+      /* --- CSS BARU untuk Tombol Start --- */
+      #start-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px 30px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        border: 3px solid #42474d;
+        background-color: #e94545;
+        color: white;
+        border-radius: 8px;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 2px solid #e94545;
+        background-color: white;
+        border-radius: 5px;
+        width: 120px;
+      }
+
+      button:hover {
+        background-color: #ecf0f1;
+      }
+
+      #score-container {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="game-container">
+      <div id="main-area">
+        <div id="controls-left" class="controls">
+          <button id="pause-btn">Pause</button>
+          <button id="resume-btn">Resume</button>
+        </div>
+
+        <div id="canvas-wrapper">
+          <canvas id="ruang" width="500" height="500"></canvas>
+          <button id="start-btn">Start</button>
+        </div>
+
+        <div id="controls-right" class="controls">
+          <button id="speed-up-btn">Speed up (+)</button>
+          <button id="speed-down-btn">Slowed down (-)</button>
+        </div>
+      </div>
+
+      <div id="score-container">Nilai: <span id="score-value">0</span></div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var ruang = $("#ruang")[0];
+        var ctx = ruang.getContext("2d");
+        var lebar = $("#ruang").width();
+        var tinggi = $("#ruang").height();
+
+        var cw = 10;
+        var tekan;
+        var makanan;
+        var nilai;
+        var array_ular;
+
+        var game_loop;
+        var kecepatan = 80;
+        var isPaused = false;
+
+        // --- FUNGSI BARU untuk menampilkan layar awal ---
+        function showStartScreen() {
+          // Menggambar latar belakang awal
+          ctx.fillStyle = "#ecf0f1";
+          ctx.fillRect(0, 0, lebar, tinggi);
+          ctx.strokeStyle = "#2c3e50";
+          ctx.strokeRect(0, 0, lebar, tinggi);
+          // Menampilkan tombol start
+          $("#start-btn").show();
+        }
+
+        function init() {
+          tekan = "right";
+          create_snake();
+          create_makanan();
+          nilai = 0;
+          isPaused = false;
+          $("#score-value").text(nilai);
+          startGameLoop();
+        }
+
+        // --- PERUBAHAN: Game tidak langsung dimulai, tapi menampilkan layar awal ---
+        showStartScreen();
+
+        function startGameLoop() {
+          if (typeof game_loop != "undefined") clearInterval(game_loop);
+          game_loop = setInterval(paint, kecepatan);
+        }
+
+        function create_snake() {
+          var length = 5;
+          array_ular = [];
+          for (var i = length - 1; i >= 0; i--) {
+            array_ular.push({ x: i, y: 0 });
+          }
+        }
+
+        function create_makanan() {
+          makanan = {
+            x: Math.round((Math.random() * (lebar - cw)) / cw),
+            y: Math.round((Math.random() * (tinggi - cw)) / cw),
+          };
+        }
+
+        function paint() {
+          if (isPaused) {
+            return;
+          }
+
+          ctx.fillStyle = "#ecf0f1";
+          ctx.fillRect(0, 0, lebar, tinggi);
+          ctx.strokeStyle = "#2c3e50";
+          ctx.strokeRect(0, 0, lebar, tinggi);
+
+          var nx = array_ular[0].x;
+          var ny = array_ular[0].y;
+          if (tekan == "right") nx++;
+          else if (tekan == "left") nx--;
+          else if (tekan == "up") ny--;
+          else if (tekan == "down") ny++;
+
+          if (
+            nx == -1 ||
+            nx == lebar / cw ||
+            ny == -1 ||
+            ny == tinggi / cw ||
+            cek_tabrakan(nx, ny, array_ular)
+          ) {
+            clearInterval(game_loop);
+            if (confirm("Game Over! Nilai Kamu: " + nilai + ". Coba lagi?")) {
+              init();
+            } else {
+              // --- PERUBAHAN: Jika 'Cancel', kembali ke layar awal ---
+              showStartScreen();
+            }
+            return;
+          }
+
+          if (nx == makanan.x && ny == makanan.y) {
+            var ekor = { x: nx, y: ny };
+            nilai++;
+            $("#score-value").text(nilai);
+            create_makanan();
+          } else {
+            var ekor = array_ular.pop();
+            ekor.x = nx;
+            ekor.y = ny;
+          }
+
+          array_ular.unshift(ekor);
+
+          for (var i = 0; i < array_ular.length; i++) {
+            var c = array_ular[i];
+            paint_cell(c.x, c.y, "#1abc9c");
+          }
+
+          paint_cell(makanan.x, makanan.y, "#e74c3c");
+        }
+
+        function paint_cell(x, y, color) {
+          ctx.fillStyle = color;
+          ctx.fillRect(x * cw, y * cw, cw, cw);
+          ctx.strokeStyle = "#ecf0f1";
+          ctx.strokeRect(x * cw, y * cw, cw, cw);
+        }
+
+        function cek_tabrakan(x, y, array) {
+          for (var i = 0; i < array.length; i++) {
+            if (array[i].x == x && array[i].y == y) return true;
+          }
+          return false;
+        }
+
+        // --- EVENT LISTENER BARU untuk Tombol Start ---
+        $("#start-btn").click(function () {
+          $(this).hide(); // Sembunyikan tombol saat diklik
+          init(); // Mulai permainan
+        });
+
+        $("#pause-btn").click(function () {
+          isPaused = true;
+        });
+
+        $("#resume-btn").click(function () {
+          if (isPaused) {
+            isPaused = false;
+            startGameLoop();
+          }
+        });
+
+        $("#speed-up-btn").click(function () {
+          if (kecepatan > 30) {
+            kecepatan -= 10;
+            if (!isPaused) startGameLoop();
+          }
+        });
+
+        $("#speed-down-btn").click(function () {
+          if (kecepatan < 150) {
+            kecepatan += 10;
+            if (!isPaused) startGameLoop();
+          }
+        });
+
+        $(document).keydown(function (e) {
+          var key = e.which;
+          if (key == "37" && tekan != "right") tekan = "left";
+          else if (key == "38" && tekan != "down") tekan = "up";
+          else if (key == "39" && tekan != "left") tekan = "right";
+          else if (key == "40" && tekan != "up") tekan = "down";
+        });
+      });
+    </script>
+  </body>
+</html>
