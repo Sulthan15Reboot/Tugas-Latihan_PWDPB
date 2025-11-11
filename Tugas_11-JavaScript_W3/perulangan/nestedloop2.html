@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NESTED LOOP 2</title>
+  </head>
+  <body>
+    <script>
+      var ulang = confirm("apakah anda mau mengulang?");
+      var counter = 0;
+
+      while (ulang) {
+        counter++;
+        var bintang = "*".repeat(counter) + "<br/>";
+        document.write(`${counter}: ${bintang}`);
+        ulang = confirm("apakah anda mau mengulang?");
+      }
+    </script>
+  </body>
+</html>

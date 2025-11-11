@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ConstrainLayout</string>
+    <string name="ini_menggunakan_constrain_layout">Ini menggunakan constrain layout</string>
+    <string name="ini_adalah_tombol">Ini adalah tombol</string>
+</resources>

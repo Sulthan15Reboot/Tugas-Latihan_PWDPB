@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 4</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .btn {
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Perhitungan bunga</h1>
+    <form name="form">
+      <pre>
+Data Input :
+Saldo       <input type="number" name="saldo" size="30" />
+bunga       <input type="number" name="bunga" size="20" />%
+Waktu       <input type="number" name="waktu" size="10"> Bulan
+<input class="btn" type="button" value="Submit" onclick="hitungBunga()">
+<input class="btn" type="reset" value="Reset">
+<textarea name="hasil" rows="10" cols="50" readonly></textarea>
+        </pre>
+    </form>
+
+    <script>
+      function hitungBunga() {
+        var saldo = parseFloat(document.form.saldo.value);
+        var suku_bunga = parseFloat(document.form.bunga.value);
+        var waktu = parseInt(document.form.waktu.value);
+        var hasil = document.form.hasil;
+
+        var saldoSaatIni = saldo;
+        var nilai_bunga = suku_bunga / 100;
+        var output = "";
+
+        for (let bulan = 1; bulan <= waktu; bulan++) {
+          var bunga = saldoSaatIni * nilai_bunga;
+
+          saldoSaatIni = saldoSaatIni + bunga;
+          const saldoFormat = Math.round(saldoSaatIni).toLocaleString("id-ID");
+
+          output += `Saldo Bulan ${bulan} = Rp. ${saldoFormat} \n`;
+        }
+        hasil.value = output;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 3</title>
+  </head>
+  <body>
+    <form name="form">
+      <table border="1" align="center">
+        <tr>
+          <td colspan="2"><b>PERHITUNGAN FAKTORIAL dan DERET</b></td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td><input type="text" name="n" size="10" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="button" value="Submit" onclick="hitung()" />
+            <input type="reset" value="Reset" />
+          </td>
+        </tr>
+        <tr>
+          <td>Hasil Faktorial</td>
+          <td><input type="text" name="faktorial" size="20" /></td>
+        </tr>
+        <tr>
+          <td>Jumlah</td>
+          <td><input type="text" name="jumlah" size="20" /></td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function hitung() {
+        var deret = document.form.n.value;
+        var jml = 0.0;
+        var faktorial = 1;
+        var angka = 1;
+
+        while (angka <= deret) {
+          jml = jml + angka;
+          faktorial = faktorial * angka;
+          angka++;
+        }
+
+        document.form.faktorial.value = faktorial;
+        document.form.jumlah.value = jml;
+      }
+    </script>
+  </body>
+</html>

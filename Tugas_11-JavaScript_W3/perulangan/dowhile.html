@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do While LOOP</title>
+  </head>
+  <body>
+    <script>
+      var ulang = confirm("Apakah anda mau mengulang?");
+      var count = 0;
+
+      do {
+        count++;
+        ulang = confirm("Apakah anda mau mengulang?");
+      } while (ulang);
+
+      document.write("Perulangan sudah dilakukan sebanyak " + count + " kali");
+    </script>
+  </body>
+</html>

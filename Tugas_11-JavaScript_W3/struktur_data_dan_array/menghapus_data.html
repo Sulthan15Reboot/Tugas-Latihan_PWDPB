@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menghapus Data Dalam Array</title>
+  </head>
+  <body>
+    <script>
+      var product = ["Senter", "Radio", "Antena", "Obeng", "Kursi"];
+
+      // menghapus secara spesifik
+      delete product[3];
+      // menghapus dari belakang
+      product.pop();
+      // menghapus dari depan
+      product.shift();
+
+      document.write(product);
+    </script>
+  </body>
+</html>

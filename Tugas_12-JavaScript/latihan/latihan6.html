@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 6</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border: 1px solid #ddd;
+      }
+      input[type="text"] {
+        padding: 5px;
+        width: 50px;
+        text-align: center;
+      }
+      input[type="button"],
+      input[type="reset"] {
+        padding: 8px 15px;
+        cursor: pointer;
+      }
+      #output {
+        margin-top: 20px;
+        border: 1px solid #000;
+        padding: 15px;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kalkulator Akar Persamaan Kuadrat</h1>
+    <h3 align="center">ax² + bx + c = 0</h3>
+
+    <form name="fform">
+      <pre>
+Koefisien A (a) : <input type="text" size="10" name="ia" value="1">
+Koefisien B (b) : <input type="text" size="10" name="ib" value="-3">
+Koefisien C (c) : <input type="text" size="10" name="ic" value="2">
+      </pre>
+      <p align="center">
+        <input type="button" value="Hitung Akar" onclick="hitungAkar()" />
+        <input type="reset" value="Ulang" />
+      </p>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+      function hitungAkar() {
+        const a = parseFloat(document.fform.ia.value);
+        const b = parseFloat(document.fform.ib.value);
+        const c = parseFloat(document.fform.ic.value);
+        const outputElement = document.getElementById("output");
+
+        if (a === 0) {
+          if (b === 0) {
+            outputElement.innerHTML =
+              "<p style='color: red;'>A dan B adalah 0. Bukan persamaan kuadrat maupun linier.</p>";
+          } else {
+            const x = -c / b;
+            outputElement.innerHTML = `<p>Akar persamaan linier (${b}x + ${c} = 0) adalah:</p>
+                                               <p>Akar (x) = ${x.toFixed(
+                                                 4
+                                               )}</p>`;
+          }
+          return;
+        }
+
+        const diskriminan = b * b - 4 * a * c;
+
+        let hasilHTML = `<h3>Akar dari ${a}x² + ${b}x + ${c} = 0</h3>`;
+
+        if (diskriminan > 0) {
+          const x1 = (-b + Math.sqrt(diskriminan)) / (2 * a);
+          const x2 = (-b - Math.sqrt(diskriminan)) / (2 * a);
+
+          hasilHTML += `<p>Diskriminan (D) = ${diskriminan.toFixed(
+            4
+          )} (D > 0). Terdapat <b>Dua Akar Nyata Berbeda</b>.</p>`;
+          hasilHTML += `<p>Akar 1 ($x_1$) = ${x1.toFixed(4)}</p>`;
+          hasilHTML += `<p>Akar 2 ($x_2$) = ${x2.toFixed(4)}</p>`;
+        } else if (diskriminan === 0) {
+          const x = -b / (2 * a);
+
+          hasilHTML += `<p>Diskriminan (D) = 0. Terdapat <b>Satu Akar Nyata (Kembar)</b>.</p>`;
+          hasilHTML += `<p>Akar Tunggal ($x$) = ${x.toFixed(4)}</p>`;
+        } else {
+          const bagianReal = (-b / (2 * a)).toFixed(4);
+          const bagianImajiner = (Math.sqrt(-diskriminan) / (2 * a)).toFixed(4);
+
+          hasilHTML += `<p style='color: orange;'>Diskriminan (D) = ${diskriminan.toFixed(
+            4
+          )} (D < 0). Akar bersifat <b>Imajiner (Kompleks)</b>.</p>`;
+          hasilHTML += `<p>Akar 1 ($x_1$) = ${bagianReal} + ${bagianImajiner}i</p>`;
+          hasilHTML += `<p>Akar 2 ($x_2$) = ${bagianReal} - ${bagianImajiner}i</p>`;
+        }
+
+        outputElement.innerHTML = hasilHTML;
+      }
+    </script>
+  </body>
+</html>

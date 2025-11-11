@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Mahasiswa</title>
+    <style>
+      body {
+        font-family: monospace;
+        background-color: rgb(47, 187, 187);
+      }
+      h1 {
+        text-align: center;
+      }
+      .left {
+        text-align: left;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Data Mahasiswa</h1>
+    <h1>Universitas Komputer Indonesia</h1>
+    <hr />
+
+    <form name="input">
+      <pre>
+NIM               : <input type="number" size="15" name="nim">
+Nama Mahasiswa    : <input type="text" size="25" name="nama">
+Jenis Kelamin     : <select name="jenkel" Size="1">
+                        <option value="Laki-Laki"> Laki-Laki </option>
+                        <option value="Perempuan"> Perempuan </option>
+                    </select>
+Agama             : <select name="agama" Size="1">
+                        <option value="Islam">Islam </option>
+                        <option value="Kristen Katolik"> Kristen Katolik </option>
+                        <option value="Kristen Protestan"> Kristen Protestan </option>
+                        <option value="Hindu"> Hindu </option>
+                        <option value="Buddha"> Buddha </option>
+                        <option value="Konghucu"> Konghucu </option>
+                    </select>
+Status            : <input type="radio" value="Kawin" name="statusRadio" /> Kawin
+Jurusan di UNIKOM : <select name="jurusan" Size="1">
+                        <option value="Teknik Informatika"> Teknik Informatika </option>
+                        <option value="Manajemen Informatika"> Manajemen Informatika </option>
+                        <option value="Teknik Komputer"> Teknik Komputer </option>
+                        <option value="Teknik Industri"> Teknik Industri </option>
+                        <option value="Teknik Elektro"> Teknik Elektro </option>
+                        <option value="Teknik Sipil"> Teknik Sipil </option>
+                        <option value="Teknik Arsitektur"> Teknik Arsitektur </option>
+                        <option value="Perencanaan Wil. Kota"> Perencanaan Wil. Kota </option>
+                    </select>
+Komentar          : <textarea name="komentar" rows="3" cols="30"></textarea>
+          </pre>
+      <button type="button" onclick="tampilkanData()">Tampilkan Data</button>
+      <button type="reset">Reset Form</button>
+    </form>
+
+    <br /><br /><br />
+
+    <h1 class="left">Data Mahasiswa Universitas Komputer Indonesia</h1>
+    <pre>
+NIM               : <input type="text" id="outputNIM" size="25" readonly>
+Nama Mahasiswa    : <input type="text" id="outputNama" size="25" readonly>
+Jenis Kelamin     : <input type="text" id="outputJenkel" size="25" readonly>
+Agama             : <input type="text" id="outputAgama" size="25" readonly>
+Status            : <input type="text" id="outputStatus" size="25" readonly>
+Jurusan di UNIKOM : <input type="text" id="outputJurusan" size="25" readonly>
+Komentar          : <textarea id="outputKomentar" rows="3" cols="30" readonly></textarea>
+        </pre>
+
+    <script>
+      function tampilkanData() {
+        var nim = document.input.nim.value;
+        var nama = document.input.nama.value;
+        var jenkel = document.input.jenkel.value;
+        var agama = document.input.agama.value;
+        var jurusan = document.input.jurusan.value;
+        var komentar = document.input.komentar.value;
+
+        var radioStatus = document.input.statusRadio;
+
+        let statusFinal;
+        if (radioStatus.checked) {
+          statusFinal = "Kawin";
+        } else {
+          statusFinal = "Tidak Kawin";
+        }
+
+        document.getElementById("outputNIM").value = nim;
+        document.getElementById("outputNama").value = nama;
+        document.getElementById("outputJenkel").value = jenkel;
+        document.getElementById("outputAgama").value = agama;
+        document.getElementById("outputStatus").value = statusFinal;
+        document.getElementById("outputJurusan").value = jurusan;
+        document.getElementById("outputKomentar").value = komentar;
+      }
+    </script>
+  </body>
+</html>

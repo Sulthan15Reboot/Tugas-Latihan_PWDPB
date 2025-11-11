@@ -1,0 +1,14 @@
+<html><head><title>Latihan 16 - Event OnLoad & OnUnload</title></head>
+<body onload="tanggal()" onunload="tutup()">
+<script language="JavaScript">
+function tanggal() {
+  var d = new Date();
+  var tgl = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+  alert("Selamat Datang! Anda datang pada tanggal " + tgl);
+}
+function tutup() {
+  alert("Terimakasih sudah berkunjung, datang lagi ya!");
+}
+</script>
+<h2>Event OnLoad & OnUnload</h2>
+</body></html>

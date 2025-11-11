@@ -1,0 +1,12 @@
+<html><head><title>Latihan 15 - Event OnBlur dan OnFocus</title></head>
+<body>
+<script language="JavaScript">
+function masukannim(){ if(document.f.inim.value=="") alert("NIM kosong"); }
+function masukannama(){ if(document.f.inama.value=="") alert("Nama kosong"); }
+</script>
+<form name="f">
+NIM: <input type="text" name="inim" onBlur="masukannim()"><br>
+NAMA: <input type="text" name="inama" onBlur="masukannama()"><br>
+<input type="button" value="Kirim">
+</form>
+</body></html>
